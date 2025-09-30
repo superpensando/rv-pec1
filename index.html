@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Basic</title>
+  <meta name="description" content="A-Frame Environment">
+  <!--Libreria A-FRAME-->
+  <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+  <!--Libreria de entronos predefinidos-->
+  <script src="https://unpkg.com/aframe-environment-component@1.0.0/dist/aframe-environment-component.min.js"></script>
+</head>
+
+<body>
+  <!-- Altres entorns previstos: default, contact, egypt, checkerboard, forest, goaland, yavapai, goldmine, 
+         threetowers, poison, arches, tron, japan, dream, volcano, starry, osiris. -->
+  <!-- Més opcions d'environment a: https://github.com/feiss/aframe-environment-component#parameters -->
+  <a-scene environment="
+    preset: japan;
+    groundTexture: wakernoise;
+    groundColor: #1E830D;
+    groundColor2: #0e3d06;
+    skyType: atmosphere;
+    skyColor: #0e7af2;
+    grid: cross;
+    dressing: torii;
+    dressingAmount:3;
+    dressingColor: red;
+    dressingScale:12;
+    fog: 0.15;
+    lightPosition: 1 5 -2;
+    shadow: true;
+    shadowSize: 10;
+  ">
+    <a-text value="Brave visit Japan" color="#420501" position="-0.9 0.2 -3" scale="1.5 1.5 1.5"></a-text>
+  </a-scene>
+
+</body>
+
+</html>
