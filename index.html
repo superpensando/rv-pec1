@@ -11,8 +11,6 @@
 </head>
 
 <body>
-  <!-- Altres entorns previstos: default, contact, egypt, checkerboard, forest, goaland, yavapai, goldmine, 
-         threetowers, poison, arches, tron, japan, dream, volcano, starry, osiris. -->
   <!-- Més opcions d'environment a: https://github.com/feiss/aframe-environment-component#parameters -->
   <a-scene environment="
     preset: japan;
@@ -31,14 +29,16 @@
     shadow: true;
     shadowSize: 10;
   ">
+    <!-- Title -->
     <a-text value="Brave in Japan" color="#420501" position="-5 3.6 -3" scale="1 1 1"></a-text>
 
+    <!-- Assets-->
     <a-assets>
       <img id="lanternTexture" src="resources/light.png">
       <img id="rockTexture" src="resources/rock.jpg">
     </a-assets>
 
-
+    <!-- Lanterns-->
     <a-entity id="lanterns">
       <!-- Left Latern -->
       <a-entity position="-2 0 -5">
