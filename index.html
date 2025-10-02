@@ -29,15 +29,38 @@
     shadow: true;
     shadowSize: 10;
   ">
+
     <!-- Title -->
-    <a-text value="Brave in Japan" color="#420501" position="-5 3.6 -3" scale="1 1 1"></a-text>
+    <a-text value="PEC1.Tutorial de iniciación A-FRAME" color="#420501" position="-5 3.6 -3" scale="0.8 0.8 0.8"></a-text>
 
     <!-- Assets-->
     <a-assets>
       <img id="lanternTexture" src="resources/light.png">
       <img id="rockTexture" src="resources/rock.jpg">
+      <a-asset-item id="lotus" src="resources/lotus.obj"></a-asset-item>
+      <a-asset-item id="lotus-mtl" src="resources/lotus.mtl"></a-asset-item>
     </a-assets>
     <!-- End Assets-->
+   
+    <!-- Lotus flowers-->
+    <a-entity obj-model="obj:#lotus; mtl: #lotus-mtl"
+	  	position="5 0 -8.25"
+	  	rotation="0 0 0"
+      scale="1.25 1.25 1.25">
+    </a-entity>
+
+     <a-entity obj-model="obj:#lotus; mtl: #lotus-mtl"
+	  	position="3.5 0 -8.5"
+	  	rotation="3 0 0"
+      scale="1 1 1">
+    </a-entity>
+
+    <a-entity obj-model="obj:#lotus; mtl: #lotus-mtl"
+	  	position="1.5 0 -9"
+	  	rotation="3 0 0"
+      scale="1.1 1.1 1.1">
+    </a-entity>
+    <!-- End Lotus flowers-->
 
     <!-- Lanterns-->
     <a-entity id="lanterns">
