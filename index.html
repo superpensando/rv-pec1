@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Basic</title>
+  <title>Japan</title>
   <meta name="description" content="A-Frame Environment">
   <!--Libreria A-FRAME-->
   <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
@@ -30,10 +30,7 @@
     shadowSize: 10;
   ">
 
-    <!-- Title -->
-    <a-text value="PEC1.Tutorial de iniciación A-FRAME" color="#420501" position="-5 3.6 -3" scale="0.8 0.8 0.8"></a-text>
-
-    <!-- Assets-->
+  <!-- Assets-->
     <a-assets>
       <img id="lanternTexture" src="resources/light.png">
       <img id="rockTexture" src="resources/rock.jpg">
@@ -41,6 +38,18 @@
       <a-asset-item id="lotus-mtl" src="resources/lotus.mtl"></a-asset-item>
     </a-assets>
     <!-- End Assets-->
+
+    <!-- Title -->
+    <a-text value="PEC1. Init tutorial A-FRAME" color="#420501" position="-4 3.6 -3" scale="0.8 0.8 0.8"></a-text>
+    
+    <!-- Link -->
+    <a-link href="page.html" title="Enter in the Torii" image="#lanternTexture" on="click" target="_self" position="0.8 1.75 -3" scale="0.35 0.35 0.35"></a-link>    
+    
+    <!-- Camera -->
+    <a-camera position="0.5 0 0">
+        <a-cursor color="#1E840C"></a-cursor>
+    </a-camera>
+
    
     <!-- Lotus flowers-->
     <a-entity obj-model="obj:#lotus; mtl: #lotus-mtl"
@@ -149,9 +158,6 @@
       </a-sphere>
     </a-entity>
     <!-- End Bonsái-->
-
-
-
   </a-scene>
 
 </body>
