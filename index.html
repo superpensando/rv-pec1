@@ -8,9 +8,58 @@
   <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
   <!--Libreria de entronos predefinidos-->
   <script src="https://unpkg.com/aframe-environment-component@1.0.0/dist/aframe-environment-component.min.js"></script>
+  <style>
+    #pagina {
+      position: absolute;
+      left: 10px;
+      bottom: 200px;
+      width: 200px;
+      height: 100px;
+      z-index: 99;
+    }
+
+    #VRarea {
+      position: relative;
+      height: 250px;
+      background-color: #FFF;
+    }
+
+    #vr1 {
+      width: 100%;
+      height: 100%;
+    }
+
+    #go {
+      position: absolute;
+      right: 16px;
+      bottom: 18px;
+      width: 53px;
+      height: 30px;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+      font-size: 12px;
+      color: #FFF;
+      text-align: center;
+    }
+  </style>
+
 </head>
 
 <body>
+  <!--iframe-->
+  <div id="pagina">
+    <div id="VRarea">
+      <iframe id="vr1" src="page.html"></iframe>
+      <div id="go" onClick="javascript:document.location='page.html'"></div>
+    </div>
+    <div id="footer">
+      <p>Click the glasses to enter</p>
+    </div>
+  </div>
+  <!--End iframe-->
+
   <!-- Més opcions d'environment a: https://github.com/feiss/aframe-environment-component#parameters -->
   <a-scene environment="
     preset: japan;
@@ -39,11 +88,12 @@
     </a-assets>
     <!-- End Assets-->
 
+
     <!-- Title -->
     <a-text value="PEC1. Init tutorial A-FRAME" color="#420501" position="-4 3.6 -3" scale="0.8 0.8 0.8"></a-text>
 
     <!-- Link -->
-    <a-link href="page.html" title="Enter in the Torii" image="#lanternTexture" on="click" target="_self"
+    <a-link href="page.html" title="Enter in the Torii" color="#FFF" image="#lanternTexture" on="click" target="_self"
       position="0.5 1.75 -3" scale="0.35 0.35 0.35"></a-link>
 
     <!-- Camera -->
@@ -166,6 +216,17 @@
 
   </a-scene>
 
+  <!--iframe-->
+  <div id="pagina">
+    <div id="VRarea">
+      <iframe id="vr1" src="page.html"></iframe>
+      <div id="go" onClick="javascript:document.location='page.html'"></div>
+    </div>
+    <div id="footer">
+      <p>Click the glasses to enter</p>
+    </div>
+  </div>
+  <!--End iframe-->
 
 </body>
 
