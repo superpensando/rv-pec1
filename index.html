@@ -1,67 +1,66 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Japan</title>
+    <meta name="description" content="A-Frame Environment" />
+    <!--Libreria A-FRAME-->
+    <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+    <!--Libreria de entronos predefinidos-->
+    <script src="https://unpkg.com/aframe-environment-component@1.0.0/dist/aframe-environment-component.min.js"></script>
+    <style>
+      #pagina {
+        position: absolute;
+        left: 10px;
+        bottom: 200px;
+        width: 200px;
+        height: 100px;
+        z-index: 99;
+      }
 
-<head>
-  <title>Japan</title>
-  <meta name="description" content="A-Frame Environment">
-  <!--Libreria A-FRAME-->
-  <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
-  <!--Libreria de entronos predefinidos-->
-  <script src="https://unpkg.com/aframe-environment-component@1.0.0/dist/aframe-environment-component.min.js"></script>
-  <style>
-    #pagina {
-      position: absolute;
-      left: 10px;
-      bottom: 200px;
-      width: 200px;
-      height: 100px;
-      z-index: 99;
-    }
+      #VRarea {
+        position: relative;
+        height: 250px;
+        background-color: #fff;
+      }
 
-    #VRarea {
-      position: relative;
-      height: 250px;
-      background-color: #FFF;
-    }
+      #vr1 {
+        width: 100%;
+        height: 100%;
+      }
 
-    #vr1 {
-      width: 100%;
-      height: 100%;
-    }
+      #go {
+        position: absolute;
+        right: 16px;
+        bottom: 18px;
+        width: 53px;
+        height: 30px;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
 
-    #go {
-      position: absolute;
-      right: 16px;
-      bottom: 18px;
-      width: 53px;
-      height: 30px;
-      background-color: rgba(0, 0, 0, 0.2);
-    }
+      p {
+        font-size: 12px;
+        color: #fff;
+        text-align: center;
+      }
+    </style>
+  </head>
 
-    p {
-      font-size: 12px;
-      color: #FFF;
-      text-align: center;
-    }
-  </style>
-
-</head>
-
-<body>
-  <!--iframe-->
-  <div id="pagina">
-    <div id="VRarea">
-      <iframe id="vr1" src="page.html"></iframe>
-      <div id="go" onClick="javascript:document.location='page.html'"></div>
+  <body>
+    <!--iframe-->
+    <div id="pagina">
+      <div id="VRarea">
+        <iframe id="vr1" src="page.html"></iframe>
+        <div id="go" onClick="javascript:document.location='page.html'"></div>
+      </div>
+      <div id="footer">
+        <p>Click the glasses to enter</p>
+      </div>
     </div>
-    <div id="footer">
-      <p>Click the glasses to enter</p>
-    </div>
-  </div>
-  <!--End iframe-->
+    <!--End iframe-->
 
-  <!-- Més opcions d'environment a: https://github.com/feiss/aframe-environment-component#parameters -->
-  <a-scene environment="
+    <!-- Scene -->
+    <a-scene
+      environment="
     preset: japan;
     groundTexture: wakernoise;
     groundColor: #1E830D;
@@ -77,157 +76,401 @@
     lightPosition: 1 5 -2;
     shadow: true;
     shadowSize: 10;
-  ">
+  "
+    >
+      <!-- Assets-->
+      <a-assets>
+        <img id="lanternTexture" src="resources/light.png" />
+        <img id="rockTexture" src="resources/rock.jpg" />
+        <a-asset-item id="lotus" src="resources/lotus.obj"></a-asset-item>
+        <a-asset-item id="lotus-mtl" src="resources/lotus.mtl"></a-asset-item>
+      </a-assets>
+      <!-- End Assets-->
 
-    <!-- Assets-->
-    <a-assets>
-      <img id="lanternTexture" src="resources/light.png">
-      <img id="rockTexture" src="resources/rock.jpg">
-      <a-asset-item id="lotus" src="resources/lotus.obj"></a-asset-item>
-      <a-asset-item id="lotus-mtl" src="resources/lotus.mtl"></a-asset-item>
-    </a-assets>
-    <!-- End Assets-->
+      <!-- Title -->
+      <a-text
+        value="PEC1. Init tutorial A-FRAME"
+        color="#420501"
+        position="-5 3.6 -3"
+        scale="1 1 1"
+      ></a-text>
+      <!-- End Title -->
 
+      <!-- Link -->
+      <a-link
+        href="page.html"
+        title="Enter in the Torii"
+        color="#FFF"
+        image="#lanternTexture"
+        position="0.5 1.75 -3"
+        scale="0.35 0.35 0.35"
+      ></a-link>
+      <!-- End Link -->
 
-    <!-- Title -->
-    <a-text value="PEC1. Init tutorial A-FRAME" color="#420501" position="-4 3.6 -3" scale="0.8 0.8 0.8"></a-text>
+      <!-- Camera -->
+      <a-camera position="0 0 0">
+        <a-cursor color="#420501"></a-cursor>
+      </a-camera>
+      <!-- End Camera-->
 
-    <!-- Link -->
-    <a-link href="page.html" title="Enter in the Torii" color="#FFF" image="#lanternTexture" on="click" target="_self"
-      position="0.5 1.75 -3" scale="0.35 0.35 0.35"></a-link>
-
-    <!-- Camera -->
-    <a-camera position="0 0 0">
-      <a-cursor color="#420501"></a-cursor>
-    </a-camera>
-
-
-    <!-- Lotus flowers-->
-    <a-entity obj-model="obj:#lotus; mtl: #lotus-mtl" position="5 0 -8.25" rotation="0 0 0" scale="1.25 1.25 1.25">
-    </a-entity>
-
-    <a-entity obj-model="obj:#lotus; mtl: #lotus-mtl" position="3.5 0 -8.5" rotation="3 0 0" scale="1 1 1">
-    </a-entity>
-
-    <a-entity obj-model="obj:#lotus; mtl: #lotus-mtl" position="1.5 0 -9" rotation="3 0 0" scale="1.1 1.1 1.1">
-    </a-entity>
-    <!-- End Lotus flowers-->
-
-    <!-- Lanterns-->
-    <a-entity id="lanterns">
-      <!-- Left Latern -->
-      <a-entity position="-2 0 -5">
-        <a-cylinder position="0 0.25 0" radius="0.12" height="0.5"
-          material="color: #444; metalness: 1; roughness: 0.1"></a-cylinder>
-        <a-box position="0 0.8 0" depth="0.5" width="0.5" height="0.6" src="#lanternTexture">
-          <a-animation attribute="rotation" loop="true" dur="10000" easing="linear" repeat="indefinite" from="0 0 0"
-            to="0 360 0"></a-animation>
-          <a-animation attribute="rotation" loop="true" dur="500" easing="linear" repeat="indefinite" from="0 0 0"
-            to="0 360 0" begin="mouseenter" end="mouseleave"></a-animation>
-        </a-box>
-        <a-box position="0 1.15 0" depth="0.8" width="0.8" height="0.15" color="#a33"></a-box>
-      </a-entity>
-      <!-- Right Latern -->
-      <a-entity position="2 0 -5">>
-        <a-cylinder position="1.5 0.25 0" radius="0.12" height="0.5"
-          material="color: #444; metalness: 1; roughness: 0.1"></a-cylinder>
-        <a-box position="1.5 0.8 0" depth="0.5" width="0.5" height="0.6" src="#lanternTexture">
-          <a-animation attribute="rotation" loop="true" dur="10000" easing="linear" repeat="indefinite" from="0 0 0"
-            to="0 360 0"></a-animation>
-          <a-animation attribute="rotation" loop="true" dur="500" easing="linear" repeat="indefinite" from="0 0 0"
-            to="0 360 0" begin="mouseenter" end="mouseleave"></a-animation>
-        </a-box>
-        <a-box position="1.5 1.15 0" depth="0.8" width="0.8" height="0.15" color="#a33" src="#lanternTexture"></a-box>
-      </a-entity>
-    </a-entity>
-    <!-- End Lanterns-->
-
-    <!-- Rocks-->
-    <a-entity id="rocks">
-
-      <!--Left rocks -->
-      <a-entity position="-2 0 -4" rotation="0 15 0">
-        <a-sphere radius="0.35" scale="1.2 0.6 0.9" shadow="cast: true" src="#rockTexture"></a-sphere>
+      <!-- Lotus flowers-->
+      <a-entity
+        obj-model="obj:#lotus; mtl: #lotus-mtl"
+        position="5 0 -8.25"
+        rotation="0 0 0"
+        scale="1.25 1.25 1.25"
+      >
       </a-entity>
 
-      <a-entity position="-2 0 -6" rotation="0 -10 0">
-        <a-sphere radius="0.32" scale="1.0 0.55 0.85" shadow="cast: true" src="#rockTexture"></a-sphere>
+      <a-entity
+        obj-model="obj:#lotus; mtl: #lotus-mtl"
+        position="3.5 0 -8.5"
+        rotation="3 0 0"
+        scale="1 1 1"
+      >
       </a-entity>
 
-      <a-entity position="-2 0 -8" rotation="0 25 0">
-        <a-sphere radius="0.38" scale="1.25 0.6 1.0" shadow="cast: true" src="#rockTexture"></a-sphere>
+      <a-entity
+        obj-model="obj:#lotus; mtl: #lotus-mtl"
+        position="3 0 -9"
+        rotation="3 0 0"
+        scale="1.1 1.1 1.1"
+      >
       </a-entity>
+      <!-- End Lotus flowers-->
 
-      <!--Right rocks -->
-      <a-entity position="4 0 -4" rotation="0 -12 0">
-        <a-sphere radius="0.34" scale="1.1 0.55 0.95" shadow="cast: true" src="#rockTexture"></a-sphere>
+      <!-- Lanterns-->
+      <a-entity id="lanterns">
+        <!-- Left Latern -->
+        <a-entity position="-2 0 -5">
+          <a-cylinder
+            position="0 0.25 0"
+            radius="0.12"
+            height="0.5"
+            material="color: #444; metalness: 1; roughness: 0.1"
+          ></a-cylinder>
+          <a-box
+            position="0 0.8 0"
+            depth="0.5"
+            width="0.5"
+            height="0.6"
+            src="#lanternTexture"
+          >
+            <a-animation
+              attribute="rotation"
+              loop="true"
+              dur="10000"
+              easing="linear"
+              repeat="indefinite"
+              from="0 0 0"
+              to="0 360 0"
+            ></a-animation>
+            <a-animation
+              attribute="rotation"
+              loop="true"
+              dur="500"
+              easing="linear"
+              repeat="indefinite"
+              from="0 0 0"
+              to="0 360 0"
+              begin="mouseenter"
+              end="mouseleave"
+            ></a-animation>
+          </a-box>
+          <a-box
+            position="0 1.15 0"
+            depth="0.8"
+            width="0.8"
+            height="0.15"
+            color="#a33"
+          ></a-box>
+        </a-entity>
+        <!-- Right Latern -->
+        <a-entity position="2 0 -5"
+          >>
+          <a-cylinder
+            position="1.5 0.25 0"
+            radius="0.12"
+            height="0.5"
+            material="color: #444; metalness: 1; roughness: 0.1"
+          ></a-cylinder>
+          <a-box
+            position="1.5 0.8 0"
+            depth="0.5"
+            width="0.5"
+            height="0.6"
+            src="#lanternTexture"
+          >
+            <a-animation
+              attribute="rotation"
+              loop="true"
+              dur="10000"
+              easing="linear"
+              repeat="indefinite"
+              from="0 0 0"
+              to="0 360 0"
+            ></a-animation>
+            <a-animation
+              attribute="rotation"
+              loop="true"
+              dur="500"
+              easing="linear"
+              repeat="indefinite"
+              from="0 0 0"
+              to="0 360 0"
+              begin="mouseenter"
+              end="mouseleave"
+            ></a-animation>
+          </a-box>
+          <a-box
+            position="1.5 1.15 0"
+            depth="0.8"
+            width="0.8"
+            height="0.15"
+            color="#a33"
+            src="#lanternTexture"
+          ></a-box>
+        </a-entity>
       </a-entity>
+      <!-- End Lanterns-->
 
-      <a-entity position="4 0 -6" rotation="0 18 0">
-        <a-sphere radius="0.36" scale="1.15 0.6 0.9" shadow="cast: true" src="#rockTexture"></a-sphere>
+      <!-- Rocks-->
+      <a-entity id="rocks">
+        <!--Left rocks -->
+        <a-entity position="-2 0 -4" rotation="0 15 0">
+          <a-sphere
+            radius="0.35"
+            scale="1.2 0.6 0.9"
+            shadow="cast: true"
+            src="#rockTexture"
+          >
+          </a-sphere>
+        </a-entity>
+
+        <a-entity position="-2 0 -6" rotation="0 -10 0">
+          <a-sphere
+            radius="0.32"
+            scale="1.0 0.55 0.85"
+            shadow="cast: true"
+            src="#rockTexture"
+          ></a-sphere>
+        </a-entity>
+
+        <a-entity position="-2 0 -8" rotation="0 25 0">
+          <a-sphere
+            radius="0.38"
+            scale="1.25 0.6 1.0"
+            shadow="cast: true"
+            src="#rockTexture"
+          >
+            <a-animation
+              attribute="scale"
+              to="2 2 2"
+              dur="300"
+              begin="mouseenter"
+            >
+            </a-animation>
+            <a-animation
+              attribute="scale"
+              to="1.25 0.6 1.0"
+              dur="300"
+              begin="mouseleave"
+            >
+            </a-animation>
+          </a-sphere>
+        </a-entity>
+
+        <!--Right rocks -->
+        <a-entity position="4 0 -4" rotation="0 -12 0">
+          <a-sphere
+            radius="0.34"
+            scale="1.1 0.55 0.95"
+            shadow="cast: true"
+            src="#rockTexture"
+          ></a-sphere>
+        </a-entity>
+
+        <a-entity position="4 0 -6" rotation="0 18 0">
+          <a-sphere
+            radius="0.36"
+            scale="1.15 0.6 0.9"
+            shadow="cast: true"
+            src="#rockTexture"
+          ></a-sphere>
+        </a-entity>
+
+        <a-entity position="4 0 -8" rotation="0 -22 0">
+          <a-sphere
+            radius="0.33"
+            scale="1.05 0.5 0.8"
+            shadow="cast: true"
+            src="#rockTexture"
+          >
+            <a-animation
+              attribute="scale"
+              to="2 2 2"
+              dur="300"
+              begin="mouseenter"
+            >
+            </a-animation>
+            <a-animation
+              attribute="scale"
+              to="1.25 0.6 1.0"
+              dur="300"
+              begin="mouseleave"
+            >
+            </a-animation>
+          </a-sphere>
+        </a-entity>
       </a-entity>
+      <!-- End Rocks-->
 
-      <a-entity position="4 0 -8" rotation="0 -22 0">
-        <a-sphere radius="0.33" scale="1.05 0.5 0.8" shadow="cast: true" src="#rockTexture"></a-sphere>
+      <!-- Bonsái -->
+      <a-entity id="bonsai" position="7 -0.1 -6" scale="1.1 1.1 1.1">
+        <!-- Branchs-->
+        <a-cylinder
+          position="0 0.5 0"
+          radius="0.12"
+          height="1.0"
+          color="#b36d3e"
+        ></a-cylinder>
+        <a-cylinder
+          position="-0.15 1.30 0"
+          radius="0.12"
+          height="0.9"
+          rotation="0 0 24"
+          color="#b36d3e"
+        ></a-cylinder>
+        <a-cone
+          position="-0.06 2.02 0.0"
+          radius-bottom="0.12"
+          radius-top="0.08"
+          height="1"
+          rotation="0 0 -35"
+          color="#b36d3e"
+        ></a-cone>
+        <a-cylinder
+          position="0 2.40 0.0"
+          radius="0.12"
+          height="1.5"
+          rotation="0 0 100"
+          color="#b36d3e"
+        ></a-cylinder>
+        <a-cone
+          position="0.7 0.7 0.01"
+          radius-bottom="0.1"
+          radius-top="0"
+          height="1.5"
+          rotation="0 0 -80"
+          color="#b36d3e"
+        ></a-cone>
+
+        <!-- Leaves-->
+        <a-sphere
+          position="-0.95 2.55 0.0"
+          radius="0.45"
+          scale="1.6 1.0 1.2"
+          rotation="0 0 -30"
+          color="#b577e1"
+        >
+          <a-animation
+            attribute="rotation"
+            direction="alternate"
+            dur="1500"
+            repeat="indefinite"
+            to="0 0 -25"
+          ></a-animation>
+        </a-sphere>
+        <a-sphere
+          position="-0.6 2.15 -0.35"
+          radius="0.32"
+          scale="1.3 0.85 1.0"
+          rotation="0 0 30"
+          color="#b577e1"
+        >
+          <a-animation
+            attribute="rotation"
+            direction="alternate"
+            dur="1400"
+            repeat="indefinite"
+            to="0 0 22"
+          ></a-animation>
+        </a-sphere>
+        <a-sphere
+          position="0.15 2.8 -0.1"
+          radius="0.38"
+          scale="1.5 0.95 1.2"
+          rotation="0 0 45"
+          color="#a75fda"
+        >
+          <a-animation
+            attribute="rotation"
+            direction="alternate"
+            dur="900"
+            repeat="indefinite"
+            to="0 0 40"
+          ></a-animation>
+        </a-sphere>
+        <a-sphere
+          position="0.95 2.5 0.1"
+          radius="0.42"
+          scale="1.6 0.95 1.25"
+          rotation="0 0 20"
+          color="#b06ad9"
+        >
+          <a-animation
+            attribute="rotation"
+            direction="alternate"
+            dur="1600"
+            repeat="indefinite"
+            to="0 0 30"
+          ></a-animation>
+        </a-sphere>
+        <a-sphere
+          position="1.0 1 0.2"
+          radius="0.30"
+          scale="1.4 0.8 1.0"
+          rotation="0 0 -30"
+          color="#b577e1"
+        >
+          <a-animation
+            attribute="rotation"
+            direction="alternate"
+            dur="1700"
+            repeat="indefinite"
+            to="0 0 -40"
+          ></a-animation>
+        </a-sphere>
+        <a-sphere
+          position="0.7 0.8 -0.15"
+          radius="0.26"
+          scale="1.2 0.75 0.9"
+          rotation="0 0 30"
+          color="#a75fda"
+        >
+          <a-animation
+            attribute="rotation"
+            direction="alternate"
+            dur="1300"
+            repeat="indefinite"
+            to="0 0 45"
+          ></a-animation>
+        </a-sphere>
       </a-entity>
+      <!-- End Bonsái-->
+    </a-scene>
+    <!--End Scene -->
 
-    </a-entity>
-    <!-- End Rocks-->
-
-
-    <!-- Bonsái -->
-    <a-entity id="bonsai" position="7 -0.1 -6" scale="1.1 1.1 1.1">
-
-      <!-- Branchs-->
-      <a-cylinder position="0 0.5 0" radius="0.12" height="1.0" color="#b36d3e"></a-cylinder>
-      <a-cylinder position="-0.15 1.30 0" radius="0.12" height="0.9" rotation="0 0 24" color="#b36d3e"></a-cylinder>
-      <a-cone position="-0.06 2.02 0.0" radius-bottom="0.12" radius-top="0.08" height="1" rotation="0 0 -35"
-        color="#b36d3e"></a-cone>
-      <a-cylinder position="0 2.40 0.0" radius="0.12" height="1.5" rotation="0 0 100" color="#b36d3e"></a-cylinder>
-      <a-cone position="0.7 0.7 0.01" radius-bottom="0.1" radius-top="0" height="1.5" rotation="0 0 -80"
-        color="#b36d3e"></a-cone>
-
-      <!-- Leaves-->
-      <a-sphere position="-0.95 2.55 0.0" radius="0.45" scale="1.6 1.0 1.2" rotation="0 0 -30" color="#b577e1">
-        <a-animation attribute="rotation" direction="alternate" dur="1500" repeat="indefinite"
-          to="0 0 -25"></a-animation>
-      </a-sphere>
-      <a-sphere position="-0.6 2.15 -0.35" radius="0.32" scale="1.3 0.85 1.0" rotation="0 0 30" color="#b577e1">
-        <a-animation attribute="rotation" direction="alternate" dur="1400" repeat="indefinite"
-          to="0 0 22"></a-animation>
-      </a-sphere>
-      <a-sphere position="0.15 2.8 -0.1" radius="0.38" scale="1.5 0.95 1.2" rotation="0 0 45" color="#a75fda">
-        <a-animation attribute="rotation" direction="alternate" dur="900" repeat="indefinite" to="0 0 40"></a-animation>
-      </a-sphere>
-      <a-sphere position="0.95 2.5 0.1" radius="0.42" scale="1.6 0.95 1.25" rotation="0 0 20" color="#b06ad9">
-        <a-animation attribute="rotation" direction="alternate" dur="1600" repeat="indefinite"
-          to="0 0 30"></a-animation>
-      </a-sphere>
-      <a-sphere position="1.0 1 0.2" radius="0.30" scale="1.4 0.8 1.0" rotation="0 0 -30" color="#b577e1">
-        <a-animation attribute="rotation" direction="alternate" dur="1700" repeat="indefinite"
-          to="0 0 -40"></a-animation>
-      </a-sphere>
-      <a-sphere position="0.7 0.8 -0.15" radius="0.26" scale="1.2 0.75 0.9" rotation="0 0 30" color="#a75fda">
-        <a-animation attribute="rotation" direction="alternate" dur="1300" repeat="indefinite"
-          to="0 0 45"></a-animation>
-      </a-sphere>
-    </a-entity>
-    <!-- End Bonsái-->
-
-  </a-scene>
-
-  <!--iframe-->
-  <div id="pagina">
-    <div id="VRarea">
-      <iframe id="vr1" src="page.html"></iframe>
-      <div id="go" onClick="javascript:document.location='page.html'"></div>
+    <!--iframe-->
+    <div id="pagina">
+      <div id="VRarea">
+        <iframe id="vr1" src="page.html"></iframe>
+        <div id="go" onClick="javascript:document.location='page.html'"></div>
+      </div>
+      <div id="footer">
+        <p>Click the glasses to enter</p>
+      </div>
     </div>
-    <div id="footer">
-      <p>Click the glasses to enter</p>
-    </div>
-  </div>
-  <!--End iframe-->
-
-</body>
-
+    <!--End iframe-->
+  </body>
 </html>
