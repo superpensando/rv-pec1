@@ -46,23 +46,11 @@
   </head>
 
   <body>
-    <!--iframe-->
-    <div id="pagina">
-      <div id="VRarea">
-        <iframe id="vr1" src="page.html"></iframe>
-        <div id="go" onClick="javascript:document.location='page.html'"></div>
-      </div>
-      <div id="footer">
-        <p>Click the glasses to enter</p>
-      </div>
-    </div>
-    <!--End iframe-->
-
     <!-- Scene -->
     <a-scene
       environment="
     preset: japan;
-    groundTexture: wakernoise;
+    groundTexture: walkernoise;
     groundColor: #1E830D;
     groundColor2: #0e3d06;
     skyType: atmosphere;
@@ -100,7 +88,6 @@
       <a-link
         href="page.html"
         title="Enter in the Torii"
-        color="#FFF"
         image="#lanternTexture"
         position="0.5 1.75 -3"
         scale="0.35 0.35 0.35"
@@ -186,8 +173,7 @@
           ></a-box>
         </a-entity>
         <!-- Right Latern -->
-        <a-entity position="2 0 -5"
-          >>
+        <a-entity position="2 0 -5">
           <a-cylinder
             position="1.5 0.25 0"
             radius="0.12"
